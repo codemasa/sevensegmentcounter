@@ -1,24 +1,26 @@
 {
-  "name": "sevensegmentcounter",
-  "version": "1.0.0",
+  "name": "seven-segment-counter",
+  "version": "1.0.2",
   "description": "A counter that is stylized as a seven segment display",
-  "main": "app.js",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^16.7.0"
+  },
   "dependencies": {
-    "babel-loader": "^8.0.5",
-    "express": "^4.16.4",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "webpack": "^2.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.1"
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
   },
   "scripts": {
-    "start": "node ./server.js",
-    "dev": "webpack -d --watch",
+    "start": "webpack --watch",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cody Abe",

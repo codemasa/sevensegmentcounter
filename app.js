@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-var i = -1;
 class SevenSegmentCounter extends React.Component {
     constructor(props){
       super(props)
