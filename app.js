@@ -27,16 +27,25 @@ class SevenSegmentCounter extends React.Component {
 
     }
     decrement() {
-      this.setState((state)=>{
-        return{index: this.state.index - 1};
-      },() => {
-        this.updateCanvas(this.state.index);
+      if(this.state.index > -2){
+        this.setState((state)=>{
+          return{index: this.state.index - 1};
+        },() => {
+          this.updateCanvas(this.state.index);
 
-    });
+        });
+      }
     }
     updateCanvas(i) {
         const canvas = this.refs.canvas;
         const context = this.refs.canvas.getContext('2d');
+        const canvasWidth = this.props.canvasWidth;
+        const canvasHeight = this.props.canvasHeight;
+        const width = canvasWidth/16;
+        const height = canvasHeight/16;
+        const space = width/4;
+        const centerW = canvasWidth/13;
+        const centerH = canvasHeight/6;
         function colorBackground(leftX,topY, width,height, color) {
         	context.fillStyle = color;
         	context.fillRect(leftX,topY, width,height);
@@ -64,35 +73,33 @@ class SevenSegmentCounter extends React.Component {
         }
 
         function colorSegment(type, digit, on){
-          const canvasWidth = 1000;
-          const canvasHeight = 225;
-          const height = 25;
-          const width = 75;
+
+
           var color = "#440000";
           if(on == true){
             color = "#FF0000";
           }
           switch(type) {
             case "A":
-              colorRect(25+(digit*width*2), 0, width, height,color);
+              colorRect((space+(digit*width*2))+centerW, 0+centerH, width, height,color);
               break;
             case "B":
-              colorRect((width+25)+(digit*width*2), 25 , height, width, color);
+              colorRect(((width+space)+(digit*width*2))+centerW, space+centerH  , height, width, color);
               break;
             case "C":
-              colorRect((width+25)+(digit*width*2), width+50 , height, width, color);
+              colorRect(((width+space)+(digit*width*2))+centerW, (width+(space*2))+centerH , height, width, color);
               break;
             case "D":
-              colorRect(25+(digit*width*2), (width+25)*2 , width, height, color);
+              colorRect((space+(digit*width*2))+centerW, ((width+space)*2)+centerH, width, height, color);
               break;
             case "E":
-              colorRect((digit*width*2), width+50 , height, width, color);
+              colorRect(((digit*width*2))+centerW, (width+(space*2))+centerH , height, width, color);
               break;
             case "F":
-              colorRect((digit*width*2), 25 , height, width, color);
+              colorRect(((digit*width*2))+centerW, space+centerH , height, width, color);
               break
             case "G":
-              colorRect(25+(digit*width*2), width+25, width, height, color);
+              colorRect((space+(digit*width*2))+centerW, (width+space)+centerH, width, height, color);
               break;
             case "DP":
               colorCircle((63+width)+(digit*width*2), (width+25)*2 + 13, height/3, color);
@@ -133,7 +140,7 @@ class SevenSegmentCounter extends React.Component {
     render() {
         return (
           <div>
-            <canvas ref="canvas" width={1025} height={225}/>
+            <canvas ref="canvas" width={this.props.canvasWidth} height={this.props.canvasHeight}/>
             <button onClick={this.increment.bind(this)}>Increment</button>
             <button onClick={this.decrement.bind(this)}>Decrement</button>
           </div>
