@@ -1,6 +1,6 @@
 {
   "name": "seven-segment-counter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A counter that is stylized as a seven segment display",
   "main": "build/index.js",
   "peerDependencies": {
@@ -22,6 +22,10 @@
     "start": "webpack --watch",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codemasa/sevensegmentcounter"
   },
   "author": "Cody Abe",
   "license": "ISC"
