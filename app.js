@@ -2,15 +2,28 @@ import React, { Component } from 'react';
 class SevenSegmentCounter extends React.Component {
     constructor(props){
       super(props)
-      this.state = {index: -1}
-
+      this.state = {
+        index: -1,
+        height: this.props.height,
+        width: this.props.width,
+        offColor: this.props.offColor,
+        onColor: this.props.onColor,
+        backgroundColor: this.props.backgroundColor;
+      }
     }
     componentDidMount() {
         this.updateCanvas(this.state.index)
         if(this.props.currentIndex){
           this.updateCanvas(this.props.currentIndex);
           this.setState((state)=>{
-            return{index: this.props.currentIndex};
+            return{
+              index: this.props.currentIndex,
+              height: this.props.height,
+              width: this.props.width,
+              offColor: this.props.offColor,
+              onColor: this.props.onColor,
+              backgroundColor: this.props.backgroundColor;
+            };
           });
         }
         else{
@@ -19,7 +32,14 @@ class SevenSegmentCounter extends React.Component {
     }
     increment() {
       this.setState((state)=>{
-        return{index: this.state.index + 1};
+        return{
+          index: this.state.index + 1,
+          height: this.props.height,
+          width: this.props.width,
+          offColor: this.props.offColor,
+          onColor: this.props.onColor,
+          backgroundColor: this.props.backgroundColor;
+        };
       },()=>{
         this.updateCanvas(this.state.index);
     });
@@ -29,7 +49,14 @@ class SevenSegmentCounter extends React.Component {
     decrement() {
       if(this.state.index > -2){
         this.setState((state)=>{
-          return{index: this.state.index - 1};
+          return{
+            index: this.state.index - 1,
+            height: this.props.height,
+            width: this.props.width,
+            offColor: this.props.offColor,
+            onColor: this.props.onColor,
+            backgroundColor: this.props.backgroundColor;
+          };
         },() => {
           this.updateCanvas(this.state.index);
 
@@ -39,8 +66,8 @@ class SevenSegmentCounter extends React.Component {
     updateCanvas(i) {
         const canvas = this.refs.canvas;
         const context = this.refs.canvas.getContext('2d');
-        const canvasWidth = this.props.canvasWidth;
-        const canvasHeight = this.props.canvasHeight;
+        const canvasWidth = this.state.width;
+        const canvasHeight = this.state.height;
         const width = canvasWidth/16;
         const height = canvasHeight/16;
         const space = width/4;
@@ -75,9 +102,9 @@ class SevenSegmentCounter extends React.Component {
         function colorSegment(type, digit, on){
 
 
-          var color = "#440000";
+          var color = this.state.offColor;
           if(on == true){
-            color = "#FF0000";
+            color = this.state.onColor;
           }
           switch(type) {
             case "A":
@@ -127,7 +154,7 @@ class SevenSegmentCounter extends React.Component {
           return false;
 
         }
-        colorBackground(0,0,canvas.width, canvas.height, "black");
+        colorBackground(0,0,canvas.width, canvas.height, this.state.backgroundColor);
         colorDigit(0, (i+1) % 10);
         colorDigit(1, Math.floor(((i+1)/10))%10);
         colorDigit(2, Math.floor(((i+1)/100))%10);
@@ -140,7 +167,7 @@ class SevenSegmentCounter extends React.Component {
     render() {
         return (
           <div>
-            <canvas ref="canvas" width={this.props.canvasWidth} height={this.props.canvasHeight}/>
+            <canvas ref="canvas" width={this.props.width} height={this.props.height}/>
             <button onClick={this.increment.bind(this)}>Increment</button>
             <button onClick={this.decrement.bind(this)}>Decrement</button>
           </div>
