@@ -8,7 +8,7 @@ class SevenSegmentCounter extends React.Component {
         width: this.props.width,
         offColor: this.props.offColor,
         onColor: this.props.onColor,
-        backgroundColor: this.props.backgroundColor;
+        backgroundColor: this.props.backgroundColor
       }
     }
     componentDidMount() {
@@ -22,7 +22,7 @@ class SevenSegmentCounter extends React.Component {
               width: this.props.width,
               offColor: this.props.offColor,
               onColor: this.props.onColor,
-              backgroundColor: this.props.backgroundColor;
+              backgroundColor: this.props.backgroundColor
             };
           });
         }
@@ -38,7 +38,7 @@ class SevenSegmentCounter extends React.Component {
           width: this.props.width,
           offColor: this.props.offColor,
           onColor: this.props.onColor,
-          backgroundColor: this.props.backgroundColor;
+          backgroundColor: this.props.backgroundColor
         };
       },()=>{
         this.updateCanvas(this.state.index);
@@ -55,7 +55,7 @@ class SevenSegmentCounter extends React.Component {
             width: this.props.width,
             offColor: this.props.offColor,
             onColor: this.props.onColor,
-            backgroundColor: this.props.backgroundColor;
+            backgroundColor: this.props.backgroundColor
           };
         },() => {
           this.updateCanvas(this.state.index);
@@ -73,6 +73,8 @@ class SevenSegmentCounter extends React.Component {
         const space = width/4;
         const centerW = canvasWidth/13;
         const centerH = canvasHeight/6;
+        const onColor = this.state.onColor;
+        const offColor = this.state.offColor;
         function colorBackground(leftX,topY, width,height, color) {
         	context.fillStyle = color;
         	context.fillRect(leftX,topY, width,height);
@@ -102,9 +104,9 @@ class SevenSegmentCounter extends React.Component {
         function colorSegment(type, digit, on){
 
 
-          var color = this.state.offColor;
+          var color = offColor;
           if(on == true){
-            color = this.state.onColor;
+            color = onColor;
           }
           switch(type) {
             case "A":
@@ -154,7 +156,7 @@ class SevenSegmentCounter extends React.Component {
           return false;
 
         }
-        colorBackground(0,0,canvas.width, canvas.height, this.state.backgroundColor);
+        colorBackground(0,0,canvas.width, canvas.height, this.props.backgroundColor);
         colorDigit(0, (i+1) % 10);
         colorDigit(1, Math.floor(((i+1)/10))%10);
         colorDigit(2, Math.floor(((i+1)/100))%10);

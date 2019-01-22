@@ -113,7 +113,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SevenSegmentCounter).call(this, props));
     _this.state = {
-      index: -1
+      index: -1,
+      height: _this.props.height,
+      width: _this.props.width,
+      offColor: _this.props.offColor,
+      onColor: _this.props.onColor,
+      backgroundColor: _this.props.backgroundColor
     };
     return _this;
   }
@@ -129,7 +134,12 @@ function (_React$Component) {
         this.updateCanvas(this.props.currentIndex);
         this.setState(function (state) {
           return {
-            index: _this2.props.currentIndex
+            index: _this2.props.currentIndex,
+            height: _this2.props.height,
+            width: _this2.props.width,
+            offColor: _this2.props.offColor,
+            onColor: _this2.props.onColor,
+            backgroundColor: _this2.props.backgroundColor
           };
         });
       } else {
@@ -143,7 +153,12 @@ function (_React$Component) {
 
       this.setState(function (state) {
         return {
-          index: _this3.state.index + 1
+          index: _this3.state.index + 1,
+          height: _this3.props.height,
+          width: _this3.props.width,
+          offColor: _this3.props.offColor,
+          onColor: _this3.props.onColor,
+          backgroundColor: _this3.props.backgroundColor
         };
       }, function () {
         _this3.updateCanvas(_this3.state.index);
@@ -154,19 +169,35 @@ function (_React$Component) {
     value: function decrement() {
       var _this4 = this;
 
-      this.setState(function (state) {
-        return {
-          index: _this4.state.index - 1
-        };
-      }, function () {
-        _this4.updateCanvas(_this4.state.index);
-      });
+      if (this.state.index > -2) {
+        this.setState(function (state) {
+          return {
+            index: _this4.state.index - 1,
+            height: _this4.props.height,
+            width: _this4.props.width,
+            offColor: _this4.props.offColor,
+            onColor: _this4.props.onColor,
+            backgroundColor: _this4.props.backgroundColor
+          };
+        }, function () {
+          _this4.updateCanvas(_this4.state.index);
+        });
+      }
     }
   }, {
     key: "updateCanvas",
     value: function updateCanvas(i) {
       var canvas = this.refs.canvas;
       var context = this.refs.canvas.getContext('2d');
+      var canvasWidth = this.state.width;
+      var canvasHeight = this.state.height;
+      var width = canvasWidth / 16;
+      var height = canvasHeight / 16;
+      var space = width / 4;
+      var centerW = canvasWidth / 13;
+      var centerH = canvasHeight / 6;
+      var onColor = this.state.onColor;
+      var offColor = this.state.offColor;
 
       function colorBackground(leftX, topY, width, height, color) {
         context.fillStyle = color;
@@ -196,43 +227,39 @@ function (_React$Component) {
       }
 
       function colorSegment(type, digit, on) {
-        var canvasWidth = 1000;
-        var canvasHeight = 225;
-        var height = 25;
-        var width = 75;
-        var color = "#440000";
+        var color = offColor;
 
         if (on == true) {
-          color = "#FF0000";
+          color = onColor;
         }
 
         switch (type) {
           case "A":
-            colorRect(25 + digit * width * 2, 0, width, height, color);
+            colorRect(space + digit * width * 2 + centerW, 0 + centerH, width, height, color);
             break;
 
           case "B":
-            colorRect(width + 25 + digit * width * 2, 25, height, width, color);
+            colorRect(width + space + digit * width * 2 + centerW, space + centerH, height, width, color);
             break;
 
           case "C":
-            colorRect(width + 25 + digit * width * 2, width + 50, height, width, color);
+            colorRect(width + space + digit * width * 2 + centerW, width + space * 2 + centerH, height, width, color);
             break;
 
           case "D":
-            colorRect(25 + digit * width * 2, (width + 25) * 2, width, height, color);
+            colorRect(space + digit * width * 2 + centerW, (width + space) * 2 + centerH, width, height, color);
             break;
 
           case "E":
-            colorRect(digit * width * 2, width + 50, height, width, color);
+            colorRect(digit * width * 2 + centerW, width + space * 2 + centerH, height, width, color);
             break;
 
           case "F":
-            colorRect(digit * width * 2, 25, height, width, color);
+            colorRect(digit * width * 2 + centerW, space + centerH, height, width, color);
             break;
 
           case "G":
-            colorRect(25 + digit * width * 2, width + 25, width, height, color);
+            colorRect(space + digit * width * 2 + centerW, width + space + centerH, width, height, color);
             break;
 
           case "DP":
@@ -261,7 +288,7 @@ function (_React$Component) {
         return false;
       }
 
-      colorBackground(0, 0, canvas.width, canvas.height, "black");
+      colorBackground(0, 0, canvas.width, canvas.height, this.props.backgroundColor);
       colorDigit(0, (i + 1) % 10);
       colorDigit(1, Math.floor((i + 1) / 10) % 10);
       colorDigit(2, Math.floor((i + 1) / 100) % 10);
@@ -275,8 +302,8 @@ function (_React$Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("canvas", {
         ref: "canvas",
-        width: 1025,
-        height: 225
+        width: this.props.width,
+        height: this.props.height
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.increment.bind(this)
       }, "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
