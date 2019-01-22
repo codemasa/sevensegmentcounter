@@ -18,6 +18,10 @@ Easy install through npm:
 ```
 npm install --save seven-segment-counter
 ```
+* In JS file:
+```
+import SevenSegmentCounter from 'seven-segment-counter';
+```
 
 
 Put on your local machine:
@@ -27,6 +31,22 @@ Put on your local machine:
 ```
 import SevenSegmentCounter from <path-to-file>;
 ```
+
+### Usage:
+* In render method:
+```
+ <SevenSegmentCounter index={-1} height={75} width={300} onColor={"#FFFFFF"} offColor={"#444444"} backgroundColor={"#000000"}/>
+```
+* Properties:
+| Property      | Type          | Description   |
+| ------------- |:-------------:|:-------------:|
+| index         | integer       | starting value of counter - 1 |
+| height        | integer       | height of counter |
+| width         | integer       | width of counter |
+| onColor       | string of hex or color | color of numbers |
+| offColor       | string of hex or color | color of the number inverse |
+| backgroundColor       | string of hex or color | color of the background |
+
 
 ## Built With
 
