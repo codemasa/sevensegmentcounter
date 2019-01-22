@@ -38,8 +38,9 @@ import SevenSegmentCounter from <path-to-file>;
  <SevenSegmentCounter index={-1} height={75} width={300} onColor={"#FFFFFF"} offColor={"#444444"} backgroundColor={"#000000"}/>
 ```
 * Properties:
+
 | Property      | Type          | Description   |
-| ------------- |:-------------:|:-------------:|
+| ------------- |:-------------:| -------------:|
 | index         | integer       | starting value of counter - 1 |
 | height        | integer       | height of counter |
 | width         | integer       | width of counter |
