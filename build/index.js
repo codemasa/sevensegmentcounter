@@ -114,7 +114,6 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SevenSegmentCounter).call(this, props));
     _this.state = {
       index: -1,
-      height: _this.props.height,
       width: _this.props.width,
       offColor: _this.props.offColor,
       onColor: _this.props.onColor,
@@ -135,7 +134,6 @@ function (_React$Component) {
         this.setState(function (state) {
           return {
             index: _this2.props.currentIndex,
-            height: _this2.props.height,
             width: _this2.props.width,
             offColor: _this2.props.offColor,
             onColor: _this2.props.onColor,
@@ -154,7 +152,6 @@ function (_React$Component) {
       this.setState(function (state) {
         return {
           index: _this3.state.index + 1,
-          height: _this3.props.height,
           width: _this3.props.width,
           offColor: _this3.props.offColor,
           onColor: _this3.props.onColor,
@@ -173,7 +170,6 @@ function (_React$Component) {
         this.setState(function (state) {
           return {
             index: _this4.state.index - 1,
-            height: _this4.props.height,
             width: _this4.props.width,
             offColor: _this4.props.offColor,
             onColor: _this4.props.onColor,
@@ -190,7 +186,7 @@ function (_React$Component) {
       var canvas = this.refs.canvas;
       var context = this.refs.canvas.getContext('2d');
       var canvasWidth = this.state.width;
-      var canvasHeight = this.state.height;
+      var canvasHeight = this.state.width / 5;
       var width = canvasWidth / 16;
       var height = canvasHeight / 16;
       var space = width / 4;
@@ -303,7 +299,7 @@ function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("canvas", {
         ref: "canvas",
         width: this.props.width,
-        height: this.props.height
+        height: this.props.width / 5
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.increment.bind(this)
       }, "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {

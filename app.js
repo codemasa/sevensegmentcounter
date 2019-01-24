@@ -4,7 +4,6 @@ class SevenSegmentCounter extends React.Component {
       super(props)
       this.state = {
         index: -1,
-        height: this.props.height,
         width: this.props.width,
         offColor: this.props.offColor,
         onColor: this.props.onColor,
@@ -18,7 +17,6 @@ class SevenSegmentCounter extends React.Component {
           this.setState((state)=>{
             return{
               index: this.props.currentIndex,
-              height: this.props.height,
               width: this.props.width,
               offColor: this.props.offColor,
               onColor: this.props.onColor,
@@ -34,7 +32,6 @@ class SevenSegmentCounter extends React.Component {
       this.setState((state)=>{
         return{
           index: this.state.index + 1,
-          height: this.props.height,
           width: this.props.width,
           offColor: this.props.offColor,
           onColor: this.props.onColor,
@@ -51,7 +48,6 @@ class SevenSegmentCounter extends React.Component {
         this.setState((state)=>{
           return{
             index: this.state.index - 1,
-            height: this.props.height,
             width: this.props.width,
             offColor: this.props.offColor,
             onColor: this.props.onColor,
@@ -67,7 +63,7 @@ class SevenSegmentCounter extends React.Component {
         const canvas = this.refs.canvas;
         const context = this.refs.canvas.getContext('2d');
         const canvasWidth = this.state.width;
-        const canvasHeight = this.state.height;
+        const canvasHeight = this.state.width/5;
         const width = canvasWidth/16;
         const height = canvasHeight/16;
         const space = width/4;
@@ -169,7 +165,7 @@ class SevenSegmentCounter extends React.Component {
     render() {
         return (
           <div>
-            <canvas ref="canvas" width={this.props.width} height={this.props.height}/>
+            <canvas ref="canvas" width={this.props.width} height={this.props.width/5}/>
             <button onClick={this.increment.bind(this)}>Increment</button>
             <button onClick={this.decrement.bind(this)}>Decrement</button>
           </div>
