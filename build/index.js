@@ -186,7 +186,7 @@ function (_React$Component) {
       var canvas = this.refs.canvas;
       var context = this.refs.canvas.getContext('2d');
       var canvasWidth = this.state.width;
-      var canvasHeight = this.state.width / 5;
+      var canvasHeight = this.state.width / 4;
       var width = canvasWidth / 16;
       var height = canvasHeight / 16;
       var space = width / 4;
@@ -299,7 +299,7 @@ function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("canvas", {
         ref: "canvas",
         width: this.props.width,
-        height: this.props.width / 5
+        height: this.props.width / 4
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.increment.bind(this)
       }, "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {

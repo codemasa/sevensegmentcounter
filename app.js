@@ -63,7 +63,7 @@ class SevenSegmentCounter extends React.Component {
         const canvas = this.refs.canvas;
         const context = this.refs.canvas.getContext('2d');
         const canvasWidth = this.state.width;
-        const canvasHeight = this.state.width/5;
+        const canvasHeight = this.state.width/4;
         const width = canvasWidth/16;
         const height = canvasHeight/16;
         const space = width/4;
@@ -165,7 +165,7 @@ class SevenSegmentCounter extends React.Component {
     render() {
         return (
           <div>
-            <canvas ref="canvas" width={this.props.width} height={this.props.width/5}/>
+            <canvas ref="canvas" width={this.props.width} height={this.props.width/4}/>
             <button onClick={this.increment.bind(this)}>Increment</button>
             <button onClick={this.decrement.bind(this)}>Decrement</button>
           </div>
