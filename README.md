@@ -42,7 +42,6 @@ import SevenSegmentCounter from <path-to-file>;
 | Property      | Type          | Description   |
 | ------------- |:-------------:| -------------:|
 | index         | integer       | starting value of counter - 1 |
-| height        | integer       | height of counter |
 | width         | integer       | width of counter |
 | onColor       | string of hex or color | color of numbers |
 | offColor       | string of hex or color | color of the number inverse |
