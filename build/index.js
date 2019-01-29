@@ -296,7 +296,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("canvas", {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        className: this.props.className
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("canvas", {
         ref: "canvas",
         width: this.props.width,
         height: this.props.width / 4

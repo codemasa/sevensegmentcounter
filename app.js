@@ -164,7 +164,7 @@ class SevenSegmentCounter extends React.Component {
     }
     render() {
         return (
-          <div>
+          <div className={this.props.className}>
             <canvas ref="canvas" width={this.props.width} height={this.props.width/4}/>
             <button onClick={this.increment.bind(this)}>Increment</button>
             <button onClick={this.decrement.bind(this)}>Decrement</button>
