@@ -304,9 +304,9 @@ function (_React$Component) {
         height: this.props.width / 4
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.increment.bind(this)
-      }, "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+      }, this.props.buttonTag.increment ? this.props.buttonTag.increment : "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.decrement.bind(this)
-      }, "Decrement"));
+      }, this.props.buttonTag.decrement ? this.props.buttonTag.decrement : "Decrement"));
     }
   }]);
 

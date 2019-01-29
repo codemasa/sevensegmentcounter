@@ -46,6 +46,9 @@ import SevenSegmentCounter from <path-to-file>;
 | onColor       | string of hex or color | color of numbers |
 | offColor       | string of hex or color | color of the number inverse |
 | backgroundColor       | string of hex or color | color of the background |
+| className       | string | css class |
+| buttonTag       | Object: {increment: <String of custom increment>, decrement: <String of custom decrement>} | custom button label |
+
 
 
 ## Built With
