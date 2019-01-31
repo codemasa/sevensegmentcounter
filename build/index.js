@@ -302,11 +302,13 @@ function (_React$Component) {
         ref: "canvas",
         width: this.props.width,
         height: this.props.width / 4
-      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        className: this.props.buttonClass
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.increment.bind(this)
       }, this.props.buttonTag.increment ? this.props.buttonTag.increment : "Increment"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.decrement.bind(this)
-      }, this.props.buttonTag.decrement ? this.props.buttonTag.decrement : "Decrement"));
+      }, this.props.buttonTag.decrement ? this.props.buttonTag.decrement : "Decrement")));
     }
   }]);
 
